@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const router = express.Router();
 const mongoose = require("mongoose");
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 const path = require("path");
 
 app.use(cors());
@@ -14,6 +14,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
+app.use(express.static(__dirname + '/public'));
 
 const Event = require("./event.model");
 const url = "mongodb://whwz:eventspass1@ds361968.mlab.com:61968/events"/*  || process.env.DATABASEURL || "mongodb://127.0.0.1:27017/events" */;
