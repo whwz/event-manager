@@ -17,7 +17,7 @@ app.get('/*', (req, res) => {
 app.use(express.static(__dirname + '/public'));
 
 const Event = require("./event.model");
-const url = "mongodb://whwz:eventspass1@ds361968.mlab.com:61968/events"/*  || process.env.DATABASEURL || "mongodb://127.0.0.1:27017/events" */;
+const url = process.env.DATABASEURL || "mongodb://127.0.0.1:27017/events";
 mongoose.connect(url, { useUnifiedTopology: true, useNewUrlParser: true });
 const connection = mongoose.connection;
 
